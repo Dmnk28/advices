@@ -1,1 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap');
+
 @import '_colors';
+
+////////////
+/* RESETS */
+////////////
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  position: relative;
+  margin: 0;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  font-weight: 400;
+}
+
+
+@mixin transitions {
+    transition: all .5s ease-in-out;
+    transition-property: background-color, color;
+}
+
+
+////////////
+/* LAYOUT */
+////////////
+
+body {
+    display: flex;
+    place-content: center;
+    align-items: center;
+    background-color: $clr-bgr;
+    font-size: 28px;
+    color: $clr-primary;
+    min-height: 90vh;
+}
+
+.flow > *:where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1.5rem);
+}
+  
+.flow--space-small {
+    --flow-space: 0.5rem;
+}
+
+.flow--space-big {
+    --flow-space: 2rem;
+}
+
+main {
+    background-color: $clr-text-bgr;
+    border-radius: 2rem;
+    padding: 2rem;
+    width: clamp(350px, 30vw, 375px);
+}

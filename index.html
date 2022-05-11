@@ -12,14 +12,16 @@
 </head>
 
 <body>
-    <main class="flow">
-        <h1>Advice #<span id="advice-number">112</span></h1>
-        <p>
-            "<span id="advice-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, et! Cumque dolorem temporibus quas inventore corporis incidunt dolorum assumenda! Quisquam assumenda quibusdam dicta quos, eum et dolores odit odio id.</span>"
-        </p>
-        <div id="divider"></div>
+    <main>
+        <article id="advice-card" class="flow">
+            <h1>Advice #<span id="advice-number">112</span></h1>
+            <p>
+                "<span id="advice-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, et! Cumque dolorem temporibus quas inventore corporis incidunt dolorum assumenda! Quisquam assumenda quibusdam dicta quos, eum et dolores odit odio id.</span>"
+            </p>
+            <div id="divider"></div>
+        </article>
         <a id="advice-btn" onclick="handleClick()">
-            <img id="dice" src="./images/icon-dice.svg" />
+            <img id="dice" class="hover-rotate" src="./images/icon-dice.svg" />
             <span class="sr-only">Give me an advice!</span>
         </a>
     </main>    

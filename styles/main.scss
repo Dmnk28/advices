@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap');
 
 @import '_colors';
+@import '_sizes';
 
 ////////////
 /* RESETS */
@@ -45,19 +46,9 @@ p {
 }
 
 
-////////////
-/* LAYOUT */
-////////////
-
-body {
-    display: flex;
-    place-content: center;
-    align-items: center;
-    background-color: $clr-bgr;
-    font-size: 28px;
-    color: $clr-primary;
-    min-height: 90vh;
-}
+///////////////
+/* UTILITIES */
+///////////////
 
 .flow > *:where(:not(:first-child)) {
     margin-top: var(--flow-space, 1.5rem);
@@ -71,9 +62,91 @@ body {
     --flow-space: 2rem;
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+////////////
+/* LAYOUT */
+////////////
+
+body {
+    display: flex;
+    place-content: center;
+    align-items: center;
+    background-color: $clr-bgr;
+    font-size: $font-size-0;
+    color: $clr-primary;
+    min-height: 90vh;
+}
+
+h1 {
+    font-size: $font-size-6;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    color: $clr-secondary;
+}
+
 main {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+}
+
+#advice-card {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    text-align: center;
     background-color: $clr-text-bgr;
     border-radius: 2rem;
     padding: 2rem;
-    width: clamp(350px, 30vw, 375px);
+    width: clamp($main-min-width, $main-variable-width, $main-max-width);
+}
+
+#divider {
+    width: 100%;
+    height: 3rem;
+    background: url('../images/pattern-divider-mobile.svg') no-repeat;
+    background-size: contain;
+
+    @media (min-width: $main-max-width) {
+        background-image: url('../images/pattern-divider-desktop.svg');
+    }
+}
+
+#advice-btn {
+    cursor: pointer;
+    --flow-space: 0;
+    display: flex;
+    place-items: center;
+    background-color: $clr-secondary;
+    border-radius: 50%;
+    padding: 1rem;
+    transform: translateY(-2.1rem);
+
+    &:hover {
+        box-shadow: 0 0 2rem 0.5rem $clr-secondary;
+    }
+
+    img {
+        width: 2.5rem;
+        aspect-ratio: 1;
+    }
+}
+
+.hover-rotate{
+    transition: transform 1s ease;
+    
+    &:hover{
+        transform: rotateZ(90deg);
+    }
 }

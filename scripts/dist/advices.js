@@ -8,17 +8,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const displayAdvice = () => __awaiter(void 0, void 0, void 0, function* () {
+let displayAdvice = () => __awaiter(void 0, void 0, void 0, function* () {
     const adviceNumberSpan = document.getElementById('advice-number');
     const adviceTextSpan = document.getElementById('advice-text');
-    const diceBtn = document.getElementById('advice-btn');
-    const getAdvice = fetch('https://api.adviceslip.com/advice')
+    fetch('https://api.adviceslip.com/advice', { cache: 'no-store' }) // {cache: 'no-store'} for preventing Mozilla Firefox from caching the response and not sending a new one.
         .then(response => {
         if (!response.ok)
             throw new Error('Response was not OK.');
+        console.log('response ok');
         return response.json();
     })
         .then(({ slip }) => {
+        console.log(slip);
         adviceNumberSpan.innerText = slip.id.toString();
         adviceTextSpan.innerText = slip.advice;
     })
@@ -26,10 +27,7 @@ const displayAdvice = () => __awaiter(void 0, void 0, void 0, function* () {
         throw new Error('Error in displayAdvice Function');
     });
 });
-document.addEventListener('DOMContentLoaded', (event) => {
-    event.preventDefault();
-    displayAdvice();
-}, false);
-const handleClick = (event) => {
+document.addEventListener('DOMContentLoaded', displayAdvice, false);
+const handleClick = () => {
     displayAdvice();
 };
